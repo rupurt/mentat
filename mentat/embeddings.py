@@ -117,7 +117,8 @@ async def get_feature_similarity_scores(
     embedding_model = session_context.config.embedding_model
     max_model_tokens = model_context_size(embedding_model)
     if max_model_tokens is None:
-        raise MentatError(f"Missing model context size for {embedding_model}.")
+        # raise MentatError(f"Missing model context size for {embedding_model}.")
+        max_model_tokens = 8000
 
     # Keep things in the same order
     checksums: list[str] = [f.get_checksum() for f in features]
